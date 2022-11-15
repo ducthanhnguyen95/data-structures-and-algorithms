@@ -1,5 +1,8 @@
 package com.codewiththanh.datastructure.arrays;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args)  {
@@ -16,7 +19,18 @@ public class Main {
 //        System.out.println(numbers.indexOf(30));
 //        numbers.removeAt(1);
 //        numbers.print();
-        System.out.println(numbers.max());;
-        numbers.intersect(arrayIntersect).print();
+//        System.out.println(numbers.max());
+//        numbers.intersect(arrayIntersect).print();
+        Array numbers1 = new Array(5);
+        numbers1.insert(10);
+        numbers1.insert(20);
+        numbers1.insert(30);
+        numbers1.insert(40);
+        numbers1.insert(50);
+        numbers1.insertAt(10, 5);
+        numbers1.print();
+//        numbers.reverse();
+//        System.out.println("\r\n");
+//        numbers.print();
     }
 }

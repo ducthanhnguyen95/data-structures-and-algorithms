@@ -1,5 +1,7 @@
 package com.codewiththanh.datastructure.arrays;
 
+import java.util.Arrays;
+
 public class Array {
 
     private int[] items;
@@ -10,6 +12,7 @@ public class Array {
         items = new int[length];
     }
 
+    //Implementing insert() method, item:int is the int item we want to insert.
     public void insert(int item) {
         // If array is full, resize it
         if (items.length == count) {
@@ -24,6 +27,7 @@ public class Array {
         items[count++] = item;
     }
 
+    //removeAt() method removes the element at the index:int index.
     public void removeAt(int index) {
         // Validate the index
         if (index < 0 || index >= count)
@@ -40,6 +44,7 @@ public class Array {
         count--;
     }
 
+    //indexOf() returns the index of the given value if it exists, OW returns -1.
     public int indexOf(int item) {
         //O(n)
         for (int i = 0; i < count; i++)
@@ -48,6 +53,11 @@ public class Array {
         return -1;
     }
 
+    /**
+     * Exercise 1:
+     *     Extend the Array class and add a new method to return the largest number.
+     *     What is the runtime complexity of this method?
+     */
     public int max() {
         int max = items[0];
         for (int i = 0; i < count; i++) {
@@ -59,6 +69,11 @@ public class Array {
         return max;
     }
 
+    /**
+     * Exercise 2:
+     *     Extend the Array class and add a method to return the common items in this array
+     *     and another array.
+     */
     public Array intersect(Array arr) {
         if (arr.count == 0 || count == 0)
             throw new IllegalArgumentException();
@@ -73,8 +88,44 @@ public class Array {
         return retArr;
     }
 
+    /**
+     * Exercise 3:
+     *     Extend the Array class and add a method to reverse the array.
+     *     For example, if the array includes [1, 2, 3, 4], after reversing and printing it,
+     *     we should see [4, 3, 2, 1].
+     */
+    public void reverse(){
+        int[] revArr = new int[count];
+        for(int i = count-1; i >= 0; i--){
+            revArr[count-1-i] = items[i];
+        }
+        items = revArr;
+    }
+
     public void print() {
         for (int i = 0; i < count; i++)
             System.out.println(items[i]);
+    }
+
+    public void insertAt(int item, int index) {
+        if(index >= count) {
+            return;
+        }
+        int[] revArr;
+        if (items.length == count) revArr = new int[count * 2];
+        else revArr = new int[count + 1];
+        for(int i = 0; i < count; i++) {
+            if(index == i) {
+                int k = count - index;
+                revArr[i] = item;
+                for(int j = 0; j < k; j++ ) {
+                    int temp = items[i];
+                    i++;
+                    revArr[i] = temp;
+                }
+            } else revArr[i] = items[i];
+        }
+        count = count * 2;
+        items = revArr;
     }
 }
