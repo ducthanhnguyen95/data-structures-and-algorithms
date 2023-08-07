@@ -19,13 +19,24 @@ public class LinkedList {
 
     public void addLast(int item){
         var node = new Node(item);
-
-        if(first == null) first = last = node;
+        if(isEmpty()) first = last = node;
         else {
             last.next = node;
-            System.out.println(first.next.value);
             last = node;
         }
+    }
+
+    public void addFirst(int item) {
+        var node = new Node(item);
+        if(isEmpty()) first = last = node;
+        else{
+            node.next = first;
+            first = node;
+        }
+    }
+
+    private Boolean isEmpty(){
+        return first == null;
     }
 
 }

@@ -9,5 +9,9 @@ public class Main {
        list.addLast(20);
        list.addLast(30);
 
+       list.addFirst(3);
+       list.addFirst(2);
+       list.addFirst(1);
+
     }
 }
