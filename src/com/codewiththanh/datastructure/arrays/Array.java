@@ -1,7 +1,5 @@
 package com.codewiththanh.datastructure.arrays;
 
-import java.util.Arrays;
-
 public class Array {
 
     private int[] items;
