@@ -26,45 +26,34 @@ public class LinkedList {
     }
 
     public void deleteFirst() {
-        if(isEmpty()) throw new NoSuchElementException();
-        if(first == last) first = last = null;
+        if (isEmpty()) throw new NoSuchElementException();
+        if (first == last) first = last = null;
         else first = first.next;
     }
 
     public void deleteLast() {
-        Node node = null;
-        if (first == last) node = first;
-        else node = first.next;
-        while (true) {
-            if (first == last) {
-                first.next = null;
-                last = first;
-                break;
-            }
-            if (node == last) {
-                node.next = null;
-                last = node;
-                break;
-            }
-            if (node.next == last) {
-                node.next = null;
-                last = node;
-                break;
-            }
-            node = node.next;
-
+        if (isEmpty()) throw new NoSuchElementException();
+        if (first == last) {
+            first = last = null;
+            return;
         }
-    }
+        var previous = getPrevious(last);
+        last = previous;
+        last.next = null;
 
-    public boolean contain(int value) {
-
-        while (true) {
-
-        }
     }
 
     private Boolean isEmpty() {
         return first == null;
+    }
+
+    private Node getPrevious(Node node) {
+        var current = first;
+        while (current != null) {
+            if (current.next == node) return current;
+            current = current.next;
+        }
+        return null;
     }
 
     private class Node {
