@@ -1,5 +1,7 @@
 package com.codewiththanh.datastructure.linkedlist;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,12 +11,14 @@ public class Main {
 //       list.addLast(20);
 //       list.addLast(30);
 //
+
        list.addFirst(3);
        list.addFirst(2);
        list.addFirst(1);
-        list.deleteFirst();
-//        list.deleteLast();
-        System.out.println();
+
+       int[] array = list.toArray();
+        System.out.println(Arrays.toString(array));
+        System.out.println(list.hasCycle());
 
     }
 }

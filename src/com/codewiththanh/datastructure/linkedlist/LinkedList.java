@@ -6,6 +6,7 @@ public class LinkedList {
 
     private Node first;
     private Node last;
+    private int size;
 
     public void addLast(int item) {
         var node = new Node(item);
@@ -14,6 +15,7 @@ public class LinkedList {
             last.next = node;
             last = node;
         }
+        ++size;
     }
 
     public void addFirst(int item) {
@@ -23,24 +25,71 @@ public class LinkedList {
             node.next = first;
             first = node;
         }
+        ++size;
     }
 
-    public void deleteFirst() {
+    public void removeFirst() {
         if (isEmpty()) throw new NoSuchElementException();
         if (first == last) first = last = null;
         else first = first.next;
+        --size;
     }
 
-    public void deleteLast() {
+    public void removeLast() {
         if (isEmpty()) throw new NoSuchElementException();
-        if (first == last) {
-            first = last = null;
-            return;
+        if (first == last) first = last = null;
+        else {
+            var previous = getPrevious(last);
+            last = previous;
+            last.next = null;
         }
-        var previous = getPrevious(last);
-        last = previous;
-        last.next = null;
+        --size;
+    }
 
+    public int indexOf(int item) {
+        int index = 0;
+        var current = first;
+        while (current != null) {
+            if (current.value == item) return index;
+            current = current.next;
+            ++index;
+        }
+        return -1;
+    }
+
+    public boolean contains(int item) {
+        return indexOf(item) != -1;
+    }
+
+    public int[] toArray() {
+        int[] array = new int[size];
+        var current = first;
+        var index = 0;
+        while (current != null) {
+            array[index++] = current.value;
+            current = current.next;
+        }
+        return array;
+    }
+
+    public boolean hasCycle() {
+        if (first == null) {
+            return false;
+        }
+        Node slow = first;
+        Node fast = first.next;
+        do {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        } while (slow != fast);
+        return true;
+    }
+
+    public int size() {
+        return size;
     }
 
     private Boolean isEmpty() {
