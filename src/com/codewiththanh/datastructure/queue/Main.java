@@ -1,6 +1,5 @@
 package com.codewiththanh.datastructure.queue;
 
-import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -52,7 +51,7 @@ public class Main {
         queue.add(1);
         queue.add(4);
         System.out.println(queue);
-        while(!queue.isEmpty())
+        while (!queue.isEmpty())
             System.out.println(queue.remove());
     }
 
