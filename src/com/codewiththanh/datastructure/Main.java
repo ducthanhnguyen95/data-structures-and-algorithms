@@ -6,4 +6,6 @@ public class Main {
         System.out.println(numArray.sumRange(2, 5));
     }
 
+
+
 }
